@@ -101,4 +101,13 @@ DB_NAME=product_manager
 JWT_SECRET=yourSuperSecretKey
 
 
+🧑‍💻 Author
+Developed with 💻 by Your Name
+
+📝 License
+MIT License — feel free to use and modify.
+
+🙌 Contributing
+Pull requests are welcome! Please fork the repo and submit a PR.
+
 
