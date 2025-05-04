@@ -73,10 +73,27 @@ A full-stack Product Management System built with **Node.js**, **Express.js**, *
 ```bash
 git clone https://github.com/your-username/product-manager-app.git
 cd product-manager-app
+
+2. Backend Setup
+bash
+Copy
+Edit
 cd backend
 cp .env.example .env      # Add DB config + JWT secret
 npm install
 npm run dev               # Runs on http://localhost:5000
+Use MySQL Workbench or CLI to create a product_manager database.
+
+3. Frontend Setup
+bash
+Copy
+Edit
+cd frontend
+cp .env.example .env      # Add VITE_API_URL
+npm install
+npm start                 # Runs on http://localhost:3000
+
+
 
 🧪 API Documentation
 Swagger UI is available at:
@@ -91,8 +108,9 @@ Token is saved in localStorage
 
 Authenticated routes use: Authorization: Bearer <token>
 
-### Environment Variables
-###.env
+🧼 Environment Variables
+Backend .env
+
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
@@ -100,6 +118,27 @@ DB_PASSWORD=yourpassword
 DB_NAME=product_manager
 JWT_SECRET=yourSuperSecretKey
 
+Frontend
+VITE_API_URL=http://localhost:5000/api
+🔐 Roles & Access
+Endpoint	Access
+POST /api/login	Public
+POST /api/register	Public
+GET /api/products	Authenticated
+POST /api/products	Authenticated
+PUT /api/products/:id	Authenticated
+DELETE /api/products/:id	Authenticated
+
+🧱 Future Improvements
+✅ Token refresh logic
+
+✅ Dockerize services
+
+🔄 Switch to microservices architecture
+
+🧠 Add user roles (Admin vs Viewer)
+
+📊 Analytics dashboard
 
 🧑‍💻 Author
 Developed with 💻 by Your Name
