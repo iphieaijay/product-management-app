@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# OS-specific stuff
+.DS_Store
+Thumbs.db
+
+# Optional environment files
+.env
+
+# Build output
+dist/
+build/
+coverage/
+
+# IDE junk
+.vscode/
+.idea/
+
+# Dependency lock files (optional if using one tool consistently)
+package-lock.json
+yarn.lock
