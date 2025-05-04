@@ -1,152 +1,134 @@
 # 🛍️ Product Manager App
 
-A full-stack Product Management System built with **Node.js**, **Express.js**, **MySQL**, and **React.js**, featuring:
+A full-stack CRUD application for managing products with authentication, built using:
 
-- 🔐 JWT-based authentication
-- 📦 CRUD operations for products
-- 🧪 Swagger for API documentation and testing
-- 🛡️ Role-based route protection
-- ⚛️ React frontend for user interaction
+🔧 Node.js + Express for the backend API
 
----
+🔐 JWT Authentication (Login/Register/Protected Routes)
 
-## 🖼️ Screenshot Preview
+🗃️ MySQL for the database
 
-![Product Manager Screenshot](https://via.placeholder.com/800x400?text=App+Screenshot+Here)
+📑 Swagger for API documentation and testing
 
----
-
-## 📁 Project Structure
-
-├── backend/ # Node.js + Express API
-│ ├── routes/
-│ ├── controllers/
-│ ├── models/
-│ ├── middleware/
-│ ├── swagger.js
-│ ├── app.js
-│ └── .env
-├── frontend/ # React.js SPA
-│ ├── src/components/
-│ ├── src/App.js
-│ ├── src/api.js
-│ └── .env
-└── README.md
-
-
----
+⚛️ React.js for the frontend UI
 
 ## 🚀 Features
+🔐 User Authentication (Register, Login, Logout)
 
-### ✅ Backend (Node.js + Express)
-- User Registration & Login (`/api/register`, `/api/login`)
-- JWT Authentication & Middleware
-- CRUD operations: Products
-- Swagger UI for API docs
-- Role-protected routes
-- MySQL database connection
+🧾 JWT-Protected Product Endpoints
 
-### 🖥️ Frontend (React)
-- Register/Login forms
-- Persistent auth with localStorage
-- Product list, create, edit, delete
-- Axios for API calls
-- Protected routes using React Router
+📦 Product CRUD: Create, Read, Update, Delete
 
----
+🛠️ Swagger UI for easy API testing
 
-## 🔧 Tech Stack
+🔄 Token expiration and refresh logic
 
-| Layer        | Tech                              |
-|--------------|-----------------------------------|
-| **Frontend** | React.js, Axios, React Router     |
-| **Backend**  | Node.js, Express.js, Swagger UI   |
-| **Database** | MySQL                             |
-| **Auth**     | JSON Web Token (JWT)              |
-| **Docs**     | Swagger                           |
+⚛️ React Frontend with login-protected routes
 
----
+📁 Clean Project Structure (ready for microservices)
 
-## ⚙️ Setup Instructions
+##  🏗️ Tech Stack
+Layer	Tech
+Backend	Node.js, Express.js
+Auth	JWT
+Database	MySQL, Sequelize (ORM)
+API Testing	Swagger UI
+Frontend	React.js, Axios
+Dev Tools	Nodemon, dotenv
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/product-manager-app.git
-cd product-manager-app
-
-2. Backend Setup
-bash
-Copy
-Edit
+## 🔧 Getting Started
+### 🖥 Backend Setup
 cd backend
-cp .env.example .env      # Add DB config + JWT secret
 npm install
-npm run dev               # Runs on http://localhost:5000
-Use MySQL Workbench or CLI to create a product_manager database.
+cp .env.example .env
+### Update your DB credentials in .env
+npm run dev
+📌 Swagger docs will be available at: http://localhost:5000/api-docs
 
-3. Frontend Setup
-bash
-Copy
-Edit
+### 💻 Frontend Setup
 cd frontend
-cp .env.example .env      # Add VITE_API_URL
 npm install
-npm start                 # Runs on http://localhost:3000
+npm start
+React app will run on: http://localhost:3000
 
+### 🧪 API Endpoints (Protected by JWT)
+Method	Endpoint	Description
+POST	/api/auth/register	Register a user
+POST	/api/auth/login	Login + Get Token
+GET	/api/products	List products
+POST	/api/products	Create product
+PUT	/api/products/:id	Update product
+DELETE	/api/products/:id	Delete product
 
+### 🛡️ All /products routes require a valid Authorization: Bearer <token> header.
 
-🧪 API Documentation
-Swagger UI is available at:
-http://localhost:5000/api-docs
+### 📸 Screenshots
+<details> <summary>📷 Click to expand</summary>
+✅ Login screen
 
-🛡️ Authentication Flow
-User registers → /api/register
+🗃️ Product list
 
-Logs in → receives JWT token
+📝 Create/Edit product
 
-Token is saved in localStorage
+🔐 Protected route example
 
-Authenticated routes use: Authorization: Bearer <token>
+</details>
 
-🧼 Environment Variables
-Backend .env
-
+### 🧰 Environment Variables (.env)
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=yourpassword
 DB_NAME=product_manager
-JWT_SECRET=yourSuperSecretKey
+JWT_SECRET=supersecurekey
+TOKEN_EXPIRY=3600
 
-Frontend
-VITE_API_URL=http://localhost:5000/api
-🔐 Roles & Access
-Endpoint	Access
-POST /api/login	Public
-POST /api/register	Public
-GET /api/products	Authenticated
-POST /api/products	Authenticated
-PUT /api/products/:id	Authenticated
-DELETE /api/products/:id	Authenticated
+### 🧪Swagger Documentation
+Available at:
+📎 http://localhost:5000/api-docs
 
-🧱 Future Improvements
-✅ Token refresh logic
+Auto-generated using Swagger JSDoc.
 
-✅ Dockerize services
+### 🔓 Auth Flow
+User registers via /auth/register
 
-🔄 Switch to microservices architecture
+Logs in via /auth/login and receives a JWT
 
-🧠 Add user roles (Admin vs Viewer)
+All product routes require JWT in Authorization header
 
-📊 Analytics dashboard
+Tokens expire after 1 hour (configurable)
 
-🧑‍💻 Author
-Developed with 💻 by Your Name
+Optionally refresh expired tokens via a refresh-token endpoint (WIP)
 
-📝 License
-MIT License — feel free to use and modify.
+### 📦 Folder Structure (Backend)
 
-🙌 Contributing
-Pull requests are welcome! Please fork the repo and submit a PR.
+backend/
+├── controllers/
+├── routes/
+├── models/
+├── middlewares/
+├── config/
+├── docs/             # Swagger definitions
+└── server.js
 
+### 🤝 Contributing
+Pull requests are welcome! Here's how to contribute:
+
+Fork the repo
+
+Create your feature branch (git checkout -b feature/new-stuff)
+
+Commit your changes (git commit -m 'Add new stuff')
+
+Push to the branch (git push origin feature/new-stuff)
+
+Create a Pull Request
+
+### 🧯 Known Issues
+No token refresh UI in frontend (yet)
+
+Pagination for products is a future enhancement
+
+### 📜 License
+MIT © 2025 — Built with 💻, ☕, and just a bit of Stack Overflow panic googling
 
